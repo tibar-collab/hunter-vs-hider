@@ -1,0 +1,119 @@
+/* Webseite Hunter vs. Hider: Farben und Schriften wie in der App (src/lib/theme.ts).
+   Schriften liegen hier im Ordner, damit keine Daten an Google gehen. */
+@font-face { font-family: 'Oswald'; src: url('fonts/Oswald_700Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Rubik'; src: url('fonts/Rubik_400Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Rubik'; src: url('fonts/Rubik_600SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+
+:root {
+  --bg: #0E1418;
+  --surface: #151E24;
+  --surface2: #1C282E;
+  --border: #24343B;
+  --text: #E8EEF0;
+  --soft: #C9D5DA;
+  --muted: #A9B8BF;
+  --hunter: #FF7A3D;
+  --hunter-bg: #24160F;
+  --hunter-border: #5A2E1A;
+  --hider: #2EC4C9;
+  --hider-bg: #0F2326;
+  --hider-border: #1E5558;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--soft);
+  font: 400 17px/1.6 'Rubik', system-ui, -apple-system, sans-serif;
+}
+a { color: var(--hider); }
+a:hover { color: #5FD6DA; }
+strong { color: var(--text); font-weight: 600; }
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+/* Kopfzeile */
+header { border-bottom: 1px solid var(--border); background: #121A1F; position: sticky; top: 0; z-index: 2; }
+header .wrap { display: flex; align-items: center; gap: 12px; min-height: 60px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.brand img { width: 34px; height: 34px; border-radius: 8px; }
+.brand span { font: 700 20px/1 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: .5px; }
+.brand .vs { color: var(--muted); font-size: 15px; }
+nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; border-radius: 8px; font-size: 15px; font-weight: 600; }
+nav a:hover { color: var(--text); background: var(--surface); }
+nav a[aria-current="page"] { color: var(--text); background: var(--surface2); }
+
+/* Inhalt */
+main { padding: 32px 0 56px; }
+h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .3px; line-height: 1.15; }
+h1 { font-size: 40px; margin: 0 0 12px; }
+h2 { font-size: 26px; margin: 40px 0 12px; }
+h3 { font-size: 19px; margin: 24px 0 6px; }
+.lead { font-size: 19px; color: var(--soft); max-width: 620px; }
+.stand { color: var(--muted); font-size: 14px; }
+
+/* Start: großer Kopf */
+.hero { text-align: center; padding: 24px 0 8px; }
+.hero img { width: 160px; height: 160px; border-radius: 36px; box-shadow: 0 0 60px rgba(46,196,201,.25); }
+.hero h1 { font-size: 48px; }
+.hero h1 .hunter { color: var(--hunter); }
+.hero h1 .hider { color: var(--hider); }
+.hero h1 .vs { color: var(--muted); font-size: 30px; }
+.hero .lead { margin: 0 auto 20px; }
+.badge-store { display: inline-block; padding: 12px 22px; border-radius: 12px; background: var(--text); color: var(--bg); font-weight: 600; text-decoration: none; }
+.badge-store small { display: block; font-weight: 400; font-size: 12px; }
+
+/* Karten */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.card { border-radius: 16px; padding: 18px 18px 16px; border: 1px solid var(--border); background: var(--surface); }
+.card.hunter { background: var(--hunter-bg); border-color: var(--hunter-border); }
+.card.hider { background: var(--hider-bg); border-color: var(--hider-border); }
+.card h3 { margin-top: 0; }
+.card.hunter h3 { color: var(--hunter); }
+.card.hider h3 { color: var(--hider); }
+.card p { margin: 0; }
+.num { font: 700 14px/1 'Oswald', sans-serif; color: var(--muted); margin-bottom: 6px; display: block; }
+
+.facts { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.facts li { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.facts li::before { content: '✓  '; color: var(--hider); font-weight: 600; }
+
+/* Häufige Fragen */
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin: 10px 0; }
+summary { cursor: pointer; padding: 14px 16px; font-weight: 600; color: var(--text); list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: '+'; float: right; color: var(--muted); font-size: 20px; line-height: 1; }
+details[open] summary::after { content: '–'; }
+details > div { padding: 0 16px 14px; }
+details p:first-child { margin-top: 0; }
+
+.box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+.box.mail { border-color: var(--hider-border); background: var(--hider-bg); }
+.big { font-size: 20px; font-weight: 600; }
+
+/* Tabellen (Datenschutz) */
+.table { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+th { color: var(--text); font-weight: 600; background: var(--surface2); }
+
+/* Platzhalter, die Tim noch ausfüllt (vor dem Veröffentlichen entfernen) */
+.todo { background: #4a3b00; color: #FFE27A; border-radius: 4px; padding: 0 4px; font-weight: 600; }
+.draft { background: #4a3b00; color: #FFE27A; text-align: center; padding: 8px 16px; font-size: 14px; }
+
+footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--muted); }
+footer .copy { margin-left: auto; }
+
+@media (max-width: 560px) {
+  h1 { font-size: 32px; }
+  .hero h1 { font-size: 38px; }
+  .hero img { width: 120px; height: 120px; border-radius: 27px; }
+  nav { margin-left: 0; width: 100%; padding-bottom: 8px; }
+  nav a { padding: 6px 8px; font-size: 14px; }
+  footer .copy { margin-left: 0; }
+}
